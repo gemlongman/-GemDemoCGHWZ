@@ -18,13 +18,13 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="SZBuffer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="PublicStruct.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="GLHandle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ISLZBuffer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,19 +32,19 @@
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="CGHWZbuffer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="LoadObject.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="PublicStruct.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="SZBuffer.cpp">
+    <ClCompile Include="GLHandle.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="GLHandle.cpp">
+    <ClCompile Include="ModelObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ISLZBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CGHWISLZbuffer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

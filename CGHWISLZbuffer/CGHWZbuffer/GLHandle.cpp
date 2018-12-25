@@ -4,13 +4,13 @@ using namespace std;
 
 const float PI = 3.1415926;
 
-SZBuffer* theSZBuffer = NULL;
+ISLZBuffer* theSZBuffer = NULL;
 Model* model = NULL;
 
-void GLHandleInit(Model* iModel, SZBuffer* iSZBuffer)
+void GLHandleInit(Model* iModel, ISLZBuffer* islzBuffer)
 {
 	model = iModel;
-	theSZBuffer = iSZBuffer;
+	theSZBuffer = islzBuffer;
 }
 
 void glDisplay()
@@ -28,16 +28,16 @@ void glDisplay()
 
 	glBegin(GL_POINTS);
 
+	//cout << "w" << width << "h" << height << endl;
 	for (int y = 0; y < height; y++)
 	{
 		for (int x = 0; x < width; x++)
 		{
-
 			Color3f rgb(1.0f, 1.0f, 1.0f);
-			int tmp = theSZBuffer->PolygonIdBuffer[y][x];
-			if (tmp >= 0)
+			int faceIndex = theSZBuffer->FaceIndexBufferMatrix->Get(y, x);
+			if (0 <= faceIndex && faceIndex < model->faces.size())
 			{
-				rgb = model->faces[tmp].color;
+				rgb = model->faces[faceIndex].color;
 			}
 			//cout << "r" << rgb.r << " g " << rgb.g << " b " << rgb.b << endl;
 			glColor3f(rgb.r, rgb.g, rgb.b);
@@ -203,8 +203,8 @@ void GLHandleRun()
 
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowSize(width, height);
-	glutInitWindowPosition(50, 80);
-	glutCreateWindow("GemDemo4CGSZBuffer");
+	glutInitWindowPosition(5, 5);
+	glutCreateWindow("GemDemo4CGISLZBuffer");
 	glutDisplayFunc(glDisplay);
 	glutReshapeFunc(reSetWindows);
 	//glutMouseFunc(mouseMotionHandle);

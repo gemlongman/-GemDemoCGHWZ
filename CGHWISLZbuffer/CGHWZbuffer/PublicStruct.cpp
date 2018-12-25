@@ -64,4 +64,43 @@ void PointLight::ShaderModel(Model& model)
 }
 
 
+Matrix::Matrix(int m, int n)
+{
+	if (m <= 0 || n <= 0)
+	{
+		return;
+	}
+	rowNum = m;
+	colNum = n;
+	pointer = new int[m*n];
+	//fill(pointer, pointer + colNum * rowNum, defaultValue);
+}
 
+Matrix::~Matrix()
+{
+	delete[] pointer;
+}
+
+int Matrix::Get(int i, int j) const
+{
+	if ( i>= rowNum || j >= colNum)
+	{
+		return -1;
+	}
+	return pointer[i*colNum + j];
+}
+
+void Matrix::Set(int i, int j, int value)
+{
+	pointer[i*colNum + j] = value;
+}
+
+void Matrix::FillSet(int val)
+{
+	fill(pointer, pointer + colNum * rowNum, val);
+}
+
+void Matrix::FillSetARow(int row,int val)
+{
+	fill(pointer + row * colNum, pointer + ( row + 1 ) * colNum, val);
+}

@@ -1,2 +1,0 @@
-# -GemDemoCGHWZ
-z buffer

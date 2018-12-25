@@ -135,7 +135,7 @@ public:
 	void ModelMove(Vector3f displacement);
 	void ModelScale(float scale);
 	void ResetModelSize(int width, int height);
-
+	void RecomputeNormal();
 };
 
 class PointLight
@@ -156,6 +156,18 @@ public:
 	void ShaderModel(Model& model);
 };
 
+class Matrix
+{
+public:
+	Matrix(int m, int n);
+	~Matrix();
 
-
-
+	int Get(int i, int j) const;
+	void Set(int i, int j, int val);
+	void FillSet(int val);
+	void FillSetARow(int row, int val);
+private:
+	int rowNum;
+	int colNum; 
+	int *pointer;
+};

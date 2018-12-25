@@ -114,6 +114,8 @@ void Model::ModelRotate(float RotateMatrix[][3])
 		vertexes[i].point = vertexes[i].point + centerPoint;
 	}
 
+	//RecomputeNormal();
+
 	int normal_num = normals.size();
 	for (int i = 0; i < normal_num; i++)
 	{
@@ -141,6 +143,8 @@ void Model::ModelMove(Vector3f displacement)
 	{
 		vertexes[i].point = vertexes[i].point + displacement;
 	}
+
+	RecomputeNormal();
 }
 
 void Model::ModelScale(float scale)
@@ -152,6 +156,22 @@ void Model::ModelScale(float scale)
 		tmp_point = tmp_point * scale;
 		vertexes[i].point = tmp_point + centerPoint;
 		
+	}
+
+	RecomputeNormal();
+}
+
+void Model::RecomputeNormal()
+{
+	int face_num = faces.size();
+	for (int i = 0; i < face_num; i++)
+	{
+		Point3f a = vertexes[faces[i].vertexIndex[0]].point;
+		Point3f	b = vertexes[faces[i].vertexIndex[1]].point;
+		Point3f c = vertexes[faces[i].vertexIndex[2]].point;
+		Vector3f normal = ((b - a).cross(c - b)).normalize();
+
+		faces[i].normal = normal;
 	}
 }
 

@@ -1,9 +1,9 @@
 #pragma once
 
 #include <GL/glut.h>
-#include "SZBuffer.h"
+#include "ISLZBuffer.h"
 
-void GLHandleInit(Model* model, SZBuffer* slzBuffer);
+void GLHandleInit(Model* model, ISLZBuffer* islzBuffer);
 void GLHandleRun();
 
 #ifdef debuggy
